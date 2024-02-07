@@ -1,0 +1,123 @@
+on_actions = {
+	####### Start setup #######
+	
+	on_startup = {
+		effect = {
+			every_possible_country = {
+				set_country_flag = {
+					flag = lost_states
+					value = 0
+				}
+			}
+			every_possible_country = {
+				set_country_flag = {
+					flag = bombed_amount
+					value = 0
+				}
+			}
+		}
+	}
+	on_monthly_FROM = {
+		effect = {
+			modify_country_flag = {
+				flag = lost_states
+				value = -1
+			}
+			modify_country_flag = {
+				flag = lost_states
+				value = -1
+			}
+		}
+	}
+
+	####### Civilians leaving to other countries due to losing the war #######
+	
+	on_state_control_changed = {
+		effect = {
+			FROM.FROM = {
+				owner = {
+					if = {
+						limit = {
+							FROM.FROM = {
+								owner = {
+									has_war_with = ROOT
+									has_capitulated = no
+								}
+							}
+						}
+						modify_country_flag = {
+							flag = lost_states
+							value = 1
+						}
+					}
+				}
+			}
+		}
+	}
+	on_state_control_changed = {
+		effect = {
+			FROM.FROM = {
+				owner = {
+					if = {
+						limit = {
+							FROM.FROM = {
+								owner = {
+									has_country_flag = {
+										flag = lost_states
+										value > 5
+									}
+									has_war_with = ROOT
+									has_capitulated = no
+								}
+							}
+						}
+						country_event = evacuationevent.1
+						set_country_flag = {
+							flag = lost_states
+							value = 0
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	####### Civilians leaving to other countries due to bombing #######
+	
+	on_weekly_FROM = {
+		effect = {
+			every_country = {
+				limit = {
+					has_war = yes
+					has_bombing_war_support < -0.01
+					random_core_state = {
+						days_since_last_strategic_bombing < 15
+					}
+				}
+				modify_country_flag = {
+					flag = bombed_amount
+					value = 1
+				}
+			}
+		}
+	}
+	on_monthly_FROM = {
+		effect = {
+			every_country = {
+				if = {
+					limit = {
+						has_country_flag = {
+							flag = bombed_amount
+							value > 20
+						}
+					}
+					country_event = evacuationevent.3
+					set_country_flag = {
+						flag = bombed_amount
+						value = 0
+					}
+				}
+			}
+		}
+	}
+}

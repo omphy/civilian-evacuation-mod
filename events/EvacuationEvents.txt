@@ -1,0 +1,213 @@
+###########################
+# Evacuation Events
+###########################
+
+add_namespace = evacuationevent
+
+#People evacuate your land because of invasion
+country_event = {
+	id = evacuationevent.1
+	title = evacuationevent.1.t
+	desc = evacuationevent.1.desc
+	picture = GFX_report_event_crowd_in_prague
+
+	is_triggered_only = yes
+	
+	trigger = {
+		has_bombing_war_support < -0.01
+	}
+
+	fire_only_once = no
+	
+	option = {
+		name = evacuationevent.1.a
+		add_stability = -0.02
+		add_war_support = -0.07
+		if = {
+			limit = {
+				any_neighbor_country = {
+					exists = yes
+					has_war = no
+				}
+			}
+			random_neighbor_country = {
+				limit = {
+					has_war = no
+				}
+				country_event = evacuationevent.2
+			}
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 100
+			}
+			add_manpower = -25281
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 10
+			}
+			add_manpower = -6268
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 1
+			}
+			add_manpower = -942
+		}
+	}
+	option = {
+		name = evacuationevent.1.b
+		add_stability = -0.05
+		add_war_support = -0.01
+		add_political_power = -50
+		if = {
+			limit = {
+				any_neighbor_country = {
+					exists = yes
+					has_war = no
+				}
+			}
+			random_neighbor_country = {
+				limit = {
+					has_war = no
+				}
+				country_event = evacuationevent.2
+			}
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 100
+			}
+			add_manpower = -20832
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 10
+			}
+			add_manpower = -3525
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 1
+			}
+			add_manpower = -412
+		}
+	}
+	option = {
+		name = evacuationevent.1.c
+		add_stability = -0.08
+		add_war_support = -0.1
+		add_political_power = -75
+		random_core_state = {
+			limit = {
+				state_population_k > 5
+			}
+			add_manpower = -2832
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 5
+			}
+			add_manpower = -1525
+		}
+	}
+}
+
+#People migrate into your land
+country_event = {
+	id = evacuationevent.2
+	title = evacuationevent.2.t
+	desc = evacuationevent.2.desc
+	picture = GFX_report_event_crowd_in_prague
+
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+
+	fire_only_once = no
+	
+	option = {
+		name = evacuationevent.2.a
+		add_stability = -0.02
+		random_core_state = {
+			add_manpower = 20281
+		}
+		random_core_state = {
+			add_manpower = 3268
+		}
+		random_core_state = {
+			add_manpower = 242
+		}
+	}
+}
+
+#People evacuate your land because of bombings
+country_event = {
+	id = evacuationevent.3
+	title = evacuationevent.3.t
+	desc = evacuationevent.3.desc
+	picture = GFX_report_event_sanation_revolt
+
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+
+	fire_only_once = no
+	
+	option = {
+		name = evacuationevent.3.a
+		add_stability = -0.01
+		if = {
+			limit = {
+				any_neighbor_country = {
+					exists = yes
+					has_war = no
+				}
+			}
+			random_neighbor_country = {
+				limit = {
+					has_war = no
+				}
+				country_event = evacuationevent.2
+			}
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 100
+			}
+			add_manpower = -35682
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 10
+			}
+			add_manpower = -7229
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 1
+			}
+			add_manpower = -682
+		}
+	}
+	option = {
+		name = evacuationevent.3.b
+		add_stability = -0.04
+		add_political_power = -30
+		random_core_state = {
+			limit = {
+				state_population_k > 5
+			}
+			add_manpower = -2032
+		}
+		random_core_state = {
+			limit = {
+				state_population_k > 5
+			}
+			add_manpower = -1325
+		}
+	}
+}

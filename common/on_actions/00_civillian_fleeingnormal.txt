@@ -1,0 +1,267 @@
+on_actions = {
+	####### Civilian evacuation due to combat in region #######
+	
+	on_state_control_changed = {
+		effect = {
+			FROM.FROM = {
+				if = {
+					limit = {
+						NOT = {
+							is_core_of = ROOT
+						}
+						state_population > 15000000
+					}
+					add_manpower = -716294
+				}
+			}
+		}
+	}
+	on_state_control_changed = {
+		effect = {
+			FROM.FROM = {
+				if = {
+					limit = {
+						NOT = {
+							is_core_of = ROOT
+						}
+						state_population > 1500000
+					}
+					add_manpower = -99362
+				}
+			}
+		}
+	}
+	on_state_control_changed = {
+		effect = {
+			FROM.FROM = {
+				if = {
+					limit = {
+						NOT = {
+							is_core_of = ROOT
+						}
+						state_population > 150000
+					}
+					add_manpower = -23536
+				}
+			}
+		}
+	}
+	on_state_control_changed = {
+		effect = {
+			FROM.FROM = {
+				if = {
+					limit = {
+						NOT = {
+							is_core_of = ROOT
+						}
+						state_population > 15000
+					}
+					add_manpower = -15539
+				}
+			}
+		}
+	}
+	
+	####### Civilian evacuation due to strategic bombing #######
+	
+	on_weekly_FROM = {
+		effect = {
+			every_state = {
+				if = {
+					limit = {
+						owner = {
+							has_war = yes
+							has_bombing_war_support < -0.01
+						}
+						days_since_last_strategic_bombing < 7
+						state_population > 15000
+					}
+					add_manpower = -153
+				}
+			}
+		}
+	}
+	
+	on_weekly_FROM = {
+		effect = {
+			every_state = {
+				if = {
+					limit = {
+						owner = {
+							has_war = yes
+							has_bombing_war_support < -0.01
+						}
+						days_since_last_strategic_bombing < 7
+						state_population > 150000
+					}
+					add_manpower = -2353
+				}
+			}
+		}
+	}
+	
+	on_weekly_FROM = {
+		effect = {
+			every_state = {
+				if = {
+					limit = {
+						owner = {
+							has_war = yes
+							has_bombing_war_support < -0.01
+						}
+						days_since_last_strategic_bombing < 7
+						state_population > 1500000
+					}
+					add_manpower = -19362
+				}
+			}
+		}
+	}
+	
+	on_weekly_FROM = {
+		effect = {
+			every_state = {
+				if = {
+					limit = {
+						owner = {
+							has_war = yes
+							has_bombing_war_support < -0.01
+						}
+						days_since_last_strategic_bombing < 7
+						state_population > 15000000
+					}
+					add_manpower = -71629
+				}
+			}
+		}
+	}
+	
+	####### Believe it or not but nukes scare off civilians too #######
+	
+	on_nuke_drop = {
+		effect = {
+			FROM = {
+				add_manpower = -4952
+			}
+		}
+	}
+	
+	on_nuke_drop = {
+		effect = {
+			FROM = {
+				if = {
+					limit = {
+						state_population > 50000
+					}
+					add_manpower = -29252
+				}
+			}
+		}
+	}
+	
+	on_nuke_drop = {
+		effect = {
+			FROM = {
+				if = {
+					limit = {
+						state_population > 100000
+					}
+					add_manpower = -57252
+				}
+			}
+		}
+	}
+	on_nuke_drop = {
+		effect = {
+			FROM = {
+				if = {
+					limit = {
+						state_population > 500000
+					}
+					add_manpower = -207252
+				}
+			}
+		}
+	}
+	on_nuke_drop = {
+		effect = {
+			FROM = {
+				if = {
+					limit = {
+						state_population > 1000000
+					}
+					add_manpower = -407252
+				}
+			}
+		}
+	}
+	on_nuke_drop = {
+		effect = {
+			FROM = {
+				if = {
+					limit = {
+						state_population > 5000000
+					}
+					add_manpower = -1507252
+				}
+			}
+		}
+	}
+	on_nuke_drop = {
+		effect = {
+			FROM = {
+				if = {
+					limit = {
+						state_population > 10000000
+					}
+					add_manpower = -2507252
+				}
+			}
+		}
+	}
+	on_nuke_drop = {
+		effect = {
+			FROM = {
+				owner = {
+					add_war_support = -0.04 # people dont like being bombed, this is in the base game but its not permanent. i think if my house got nuked i would be against a war for more than 2 months
+				}
+				remove_building = {
+					type = arms_factory
+					level = 3
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 3
+				}
+				remove_building = {
+					type = air_base
+					level = 3
+				}
+				remove_building = {
+					type = dockyard
+					level = 1
+				}
+				remove_building = {
+					type = radar_station
+					level = 1
+				}
+				remove_building = {
+					type = anti_air_building
+					level = 4
+				}
+				remove_building = {
+					type = synthetic_refinery
+					level = 2
+				}
+				remove_building = {
+					type = rocket_site
+					level = 2
+				}
+				remove_building = {
+					type = infrastructure
+					level = 2
+				}
+			}
+		}
+	}
+}
